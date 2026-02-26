@@ -7,5 +7,19 @@ void main() {
   testWidgets('My widget has a Text Spent', (tester) async {
     await tester
         .pumpWidget(MaterialApp(home: BankInherited(child: const Home())));
+    final spentFinder = find.text('Spent');
+    expect(spentFinder, findsOneWidget);
+  });
+
+  testWidgets('It finds a LinearProgressIndicator', (tester) async {
+    await tester
+        .pumpWidget(MaterialApp(home: BankInherited(child: const Home())));
+    expect(find.byType(LinearProgressIndicator), findsOneWidget);
+  });
+
+  testWidgets('It finds an AccountStatus by key', (tester) async {
+    await tester
+        .pumpWidget(MaterialApp(home: BankInherited(child: const Home())));
+    expect(find.byKey(Key('testKey')), findsOneWidget);
   });
 }
