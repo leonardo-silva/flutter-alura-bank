@@ -31,4 +31,15 @@ void main() {
       return (widget is BoxCard);
     }), findsNWidgets(5));
   });
+
+  testWidgets('When tap Deposit button property earned should increase in 10',
+      (tester) async {
+    await tester
+        .pumpWidget(MaterialApp(home: BankInherited(child: const Home())));
+    await tester.tap(find.text('Deposit'));
+    await tester.tap(find.text('Earned'));
+    // It is necessary to 'pump' the tester to 'reresh' the test screen with the actions performed
+    await tester.pumpAndSettle();
+    expect(find.text('\$10.0'), findsOneWidget);
+  });
 }
