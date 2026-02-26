@@ -1,3 +1,4 @@
+import 'package:estilizacao_componentes/components/box_card.dart';
 import 'package:estilizacao_componentes/data/bank_inherited.dart';
 import 'package:estilizacao_componentes/screens/home.dart';
 import 'package:flutter/material.dart';
@@ -21,5 +22,13 @@ void main() {
     await tester
         .pumpWidget(MaterialApp(home: BankInherited(child: const Home())));
     expect(find.byKey(Key('testKey')), findsOneWidget);
+  });
+
+  testWidgets('It finds 5 BoxCards', (tester) async {
+    await tester
+        .pumpWidget(MaterialApp(home: BankInherited(child: const Home())));
+    expect(find.byWidgetPredicate((widget) {
+      return (widget is BoxCard);
+    }), findsNWidgets(5));
   });
 }
