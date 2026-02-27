@@ -5,15 +5,18 @@ import 'package:estilizacao_componentes/components/sections/recent_activities.da
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  const Home({super.key, required this.api});
+  final Future<String> api;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: const <Widget>[
-            Header(), // cuidado com o const
+          children: <Widget>[
+            Header(
+              api: api,
+            ), // cuidado com o const
             RecentActivity(),
             ActionsSection(),
             PointsExchange(),
