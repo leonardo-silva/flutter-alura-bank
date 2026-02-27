@@ -1,0 +1,18 @@
+# Source - https://stackoverflow.com/a/68275812
+# Posted by HerrJohr
+# Retrieved 2026-02-27, License - CC BY-SA 4.0
+
+targets:
+  $default:
+    sources:
+      - $package$
+      - lib/$lib$
+      - lib/**.dart
+      - test/**.dart
+      - integration_test/**.dart
+    builders:
+      mockito|mockBuilder:
+        generate_for:
+          - test/**.dart
+          - integration_test/**.dart
+          - lib/data/**.dart
